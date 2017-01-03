@@ -1,0 +1,21 @@
+template:
+    directory: theme
+    index: introduction.md
+
+exclude:
+    - %gitignore%
+
+cname: laratools.com
+
+# Theme Specific
+github:
+    user: laratools
+    repo: laratools
+
+menu:
+    sections:
+        main:
+            items:
+                introduction:
+                    text: Introduction
+                    path: introduction.html
