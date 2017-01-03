@@ -19,3 +19,6 @@ menu:
                 introduction:
                     text: Introduction
                     path: introduction.html
+                installation:
+                    text: Installation
+                    path: installation.html
