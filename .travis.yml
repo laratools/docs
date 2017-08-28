@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 7.1
+
+env:
+  global:
+    - GIT_NAME: "'Auto-Deploy'"
+    - GIT_EMAIL: auto-deploy@laratools.com
+    - GH_REF: github.com/laratools/docs
+    - secure: FkFhmX/7lCj1DBUH193Mcb75+3n1F8f3Fthd1wumCq9Z8SvRG4qAfNPDQj6KtbSlnfaiq2ozMXmSInAOMpZJk/s29QfisxOkTcHYEB4QT5Wra0bbwx/SYrvMxHF997AUWOgPK8IHORTfxZPBajez0XPnmMc/Tu4l2wjwA6s3I2oYavfekoBzHWE+bnqFnUMXtdRW7hMlWc1A7SFFkhDGmXezP4/pDjQTB+4JtnWLb1eP0vD+OsT2Fw7runcCiWdH+jluK4/dDHUtr9xBzpnAEZrqbRj0dcV3Cikx+aIyptH74t3cgaby/hPckfF1C1lxGo5TKTu5MDTjJArg/G5UNPVcdZm70Un8ZWhOgtlbbPi3Pn2tPuhCrF3dLukvZWDAvuDTvMtHe05hwnOED9CtJA9VKUWdgBms3BUD6Cpp7CEjhRJ67+eUsnUHoR5ej8foL/O5Pi3E+KxaCEKQ7o6/uh951A4YBsv3eh4/NZZ3ScM5r8ZtCf8XwXeavhNlYxq0W2blCxvXsrnWav4ddGn3Fu0WLvsjdD4Sss6qaXc3ZFtR2K2Dc2CQ8gppUzbmF3KwKbF5x7h3xxF/0Il+JLYIw5qqySjHb3SOsIskDBGHLFeXjCApxCflHD2ZBDNoPS4Zi/Wj8rbtQ6MHhQL9GdXMZu/yVTtVLNkoqwr/72ACPfU=
+
+before_script:
+  - composer require couscous/couscous --no-progress --no-suggest
+
+script:
+  - vendor/bin/couscous travis-auto-deploy
