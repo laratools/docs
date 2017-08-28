@@ -16,7 +16,7 @@ github:
 title: Laratools
 subTitle: A collection of useful everyday tools for Laravel
 footerText: Copyright &copy; <a href="https://iwader.co.uk">iWader Limited</a>
-# googleAnalyticsCode: U-EXAMPLE-CODE
+googleAnalyticsCode: UA-105579782-1
 
 menu:
   items:
