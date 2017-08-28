@@ -134,7 +134,7 @@ jobs:
 
       - run:
           name: Dusk
-          command: php artisan dusk
+          command: DISPLAY=:0 php artisan dusk
 
       - store_artifacts:
           path: ./tests/Browser/console

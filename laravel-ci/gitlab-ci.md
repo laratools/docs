@@ -80,5 +80,5 @@ test:
   script:
     - ./vendor/bin/phpunit
     - npm run prod
-    - php artisan dusk
+    - DISPLAY=:0 php artisan dusk
 ``` 
