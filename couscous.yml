@@ -1,23 +1,39 @@
 template:
-    directory: theme
-    index: introduction.md
+  directory: theme
+  index: introduction.md
 
 exclude:
-    - %gitignore%
+  - %gitignore%
 
 cname: laratools.com
 
-# Theme Specific
+baseUrl: https://laratools.com
+
 github:
-    user: laratools
-    repo: laratools
+  user: laratools
+  repo: laratools
+
+title: Laratools
+subTitle: A collection of useful everyday tools for Laravel
+footerText: Copyright &copy; <a href="https://iwader.co.uk">iWader Limited</a>
+# googleAnalyticsCode: U-EXAMPLE-CODE
 
 menu:
-    sections:
-        main:
-            items:
-                introduction:
-                    text: Introduction
-                installation:
-                    text: Installation
-                    path: installation.html
+  items:
+    introduction:
+      text: Introduction
+      relativeUrl:
+
+  sections:
+    ci:
+      name: Laravel CI
+      items:
+        introduction:
+          text: Introduction
+          relativeUrl: laravel-ci/
+        circleci:
+          text: CircleCI
+          relativeUrl: laravel-ci/circleci.html
+        gitlabci:
+          text: GitLab CI
+          relativeUrl: laravel-ci/gitlab-ci.html
