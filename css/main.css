@@ -1,0 +1,114 @@
+/* Standard Setup */
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+pre {
+    font-family: 'Source Code Pro', monospace;
+}
+
+a {
+    color: #F4645F;
+    text-decoration: underline;
+}
+
+a:hover,
+a:active {
+    color: #F1362F;
+}
+
+blockquote {
+    /* Taken from bootstraps .alert-primary styling */
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #F1362F;
+    border-radius: .25rem;
+    color: #fff;
+    background-color: #F4645F;
+}
+
+blockquote p {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 1.5em;
+    margin-bottom: 0.9em;
+}
+
+.flex {
+    display: flex;
+}
+
+/* Bootstrap Overrides */
+.btn.btn-outline-primary {
+    color: #F4645F;
+    background-image: none;
+    background-color: transparent;
+    border-color: #F4645F;
+    text-decoration: none;
+}
+
+.btn.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #F4645F;
+    border-color: #F1362F;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Custom Styles */
+.site-header {
+    padding: 1em;
+    background: #F4645F;
+    margin-bottom: 2em;
+    border-bottom: 1px solid #F1362F;
+}
+
+.site-header__inner {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header__branding-logo {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 1em;
+}
+
+.site-header__branding-name {
+    margin-bottom: 0;
+}
+
+.site-header__branding-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-header__branding-link:hover,
+.site-header__branding-link:active {
+    color: #fff;
+}
+
+.site-header__branding-link:hover,
+.site-header__branding-link:active {
+    text-decoration: none;
+}
+
+.site-header__nav {
+    justify-self: end;
+}
+
+.site-header__nav a,
+.site-header__nav a:hover,
+.site-header__nav a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav__section-header {
+    margin-top: 1rem;
+}

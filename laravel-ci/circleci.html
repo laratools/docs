@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Laratools - A collection of useful everyday tools for Laravel</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://laratools.com/css/main.css">
+        <link rel="stylesheet" href="https://laratools.com/css/prism.css">
+
+        <link rel="shortcut icon" type="image/png" href="https://laratools.com/img/favicon-32x32.png" sizes="32x32" />
+        <link rel="shortcut icon" type="image/png" href="https://laratools.com/img/favicon-16x16.png" sizes="16x16" />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header__inner flex flex-column flex-md-row">
+                    <div class="flex">
+                        <img src="https://laratools.com/img/laratools-inverse.png" alt="Laratools Logo" class="site-header__branding-logo">
+
+                        <h1 class="site-header__branding-name">
+                            <a href="https://laratools.com" class="site-header__branding-link">
+                                Laratools
+                            </a>
+                        </h1>
+                    </div>
+
+                    <nav class="site-header__nav float-right">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a href="https://github.com/laratools/laratools" class="nav-link">GitHub</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                    <nav class="col-sm-3 col-lg-2" role="navigation">
+                        <ul class="nav flex-column">
+
+                            
+                                <li class="nav-item">
+                                    <a href="https://laratools.com/" class="nav-link ">
+                                        Introduction
+                                    </a>
+                                </li>
+
+                            
+                        </ul>
+
+                                                    <p class="nav__section-header text-muted">
+                                Laravel CI
+                            </p>
+
+                            <ul class="nav flex-column">
+                                                                    <li class="nav-item">
+                                        <a href="https://laratools.com/laravel-ci/" class="nav-link ">
+                                            Introduction
+                                        </a>
+                                    </li>
+                                                                    <li class="nav-item">
+                                        <a href="https://laratools.com/laravel-ci/circleci.html" class="nav-link active">
+                                            CircleCI
+                                        </a>
+                                    </li>
+                                                                    <li class="nav-item">
+                                        <a href="https://laratools.com/laravel-ci/gitlab-ci.html" class="nav-link ">
+                                            GitLab CI
+                                        </a>
+                                    </li>
+                                                            </ul>
+                        
+                    </nav>
+
+                
+                <section class="col-sm-9 col-lg-10 content">
+                    <h1 id="laravel-ci-on-circleci">Laravel-CI on CircleCI</h1>
+<p>Heres a few examples on getting up and running using the image on CircleCI. You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.</p>
+<h4 id="contents">Contents</h4>
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#laravel-mix">Laravel Mix</a></li>
+<li><a href="#laravel-dusk">Laravel Dusk</a></li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<p>This is the minimal setup you'll need to get your unit tests running.</p>
+<blockquote>
+<p>💡 Don't forget to choose the correct image you need for your projects PHP version requirement</p>
+</blockquote>
+<pre><code class="language-yaml">version: 2
+
+jobs:
+  build:
+    working_directory: /var/www
+
+    docker:
+      - image: laratools/laravel-ci:latest
+
+    steps:
+
+      - checkout
+
+      - run:
+          name: Install Composer Dependencies
+          command: composer install --no-progress --no-suggest
+
+      - run:
+          name: Unit Tests
+          command: ./vendor/bin/phpunit</code></pre>
+<h2 id="laravel-mix">Laravel Mix</h2>
+<p>The <code>laratools/laravel-ci</code> image comes with <a href="https://github.com/creationix/nvm">nvm</a> installed which allows you to easily install different node versions.</p>
+<p>Here we'll install node version 8, install our npm dependencies and then run laravel mix to check our production assets can be built.</p>
+<pre><code class="language-yaml">version: 2
+
+jobs:
+  build:
+    working_directory: /var/www
+
+    docker:
+      - image: laratools/laravel-ci:latest
+
+    steps:
+
+      - checkout
+
+      - run:
+          name: Install Composer Dependencies
+          command: composer install --no-progress --no-suggest
+
+      - run:
+          name: Unit Tests
+          command: ./vendor/bin/phpunit
+
+      - run:
+          name: Install Node Dependencies
+          command: |
+            nvm install 8
+            npm install
+
+      - run:
+          name: Mix
+          command: npm run prod</code></pre>
+<h2 id="laravel-dusk">Laravel Dusk</h2>
+<p>Heres where things get a little trickier. Firstly we must open a browser, by default dusk uses chrome so we'll open a new instance.
+Next you'll need to serve your application to chrome can interact with it. Luckily Artisan comes with a handy serve command <code>php artisan serve</code>, lets use that.
+Finally we can run the dusk tests.</p>
+<p>In this example we also store the artifacts. Artifacts are any files that are generated during the build process. Defining them means CircleCI will store them
+for you to access later. In this case, it means you can see what the browser was doing if the tests fail.  </p>
+<pre><code class="language-yaml">version: 2
+
+jobs:
+  build:
+    working_directory: /var/www
+
+    docker:
+      - image: laratools/laravel-ci:latest
+
+    steps:
+
+      - checkout
+
+      - run:
+          name: Install Composer Dependencies
+          command: composer install --no-progress --no-suggest
+
+      - run:
+          name: Unit Tests
+          command: ./vendor/bin/phpunit
+
+      - run:
+          name: Install Node Dependencies
+          command: |
+            nvm install 8
+            npm install
+
+      - run:
+          name: Mix
+          command: npm run prod
+
+      - run:
+          name: Open Browsers
+          background: true
+          command: ./vendor/laravel/dusk/bin/chromedriver-linux
+
+      - run:
+          name: Serve Application
+          background: true
+          command: php artisan serve
+
+      - run:
+          name: Dusk
+          command: php artisan dusk
+
+      - store_artifacts:
+          path: ./tests/Browser/console
+          destination: console
+
+      - store_artifacts:
+          path: ./tests/Browser/screenshots
+          destination: screenshots</code></pre>
+                </section>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="bottom-panel">
+                <div class="text-center">
+                    <span>
+                                                    Copyright &copy; <a href="https://iwader.co.uk">iWader Limited</a>
+                                            </span>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://laratools.com/js/prism.min.js"></script>
+        <script>
+                    </script>
+
+    </body>
+</html>
