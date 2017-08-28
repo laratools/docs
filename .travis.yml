@@ -14,4 +14,4 @@ before_script:
   - composer require couscous/couscous --no-progress --no-suggest
 
 script:
-  - vendor/bin/couscous travis-auto-deploy
+  - vendor/bin/couscous travis-auto-deploy --php-version=7.1
