@@ -13,8 +13,8 @@ Of course it may be used with any platform that supports Docker, so feel free to
 - [PHP Versions](#php-versions)
 - [Pre-Installed Software](#pre-installed-software)
 - Platforms 
-  - [CircleCI](/laravel-ci/circleci)
-  - [GitLab CI](/laravel-ci/gitlab-ci)
+  - [CircleCI](/laravel-ci/circleci.html)
+  - [GitLab CI](/laravel-ci/gitlab-ci.html)
 
 ## PHP Versions
 
