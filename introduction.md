@@ -22,4 +22,4 @@ You only need to add the service providers and facades if you're using Laravel 5
 
 ## Security
 
-If you discover any security related issues, please email wade@iwader.co.uk instead of using the issue tracker.
+If you discover any security related issues, please email [security@iwader.co.uk](mailto:security@iwader.co.uk) instead of using the issue tracker.
