@@ -16,7 +16,7 @@ Heres a few examples on getting up and running using the image on CircleCI. You 
 
 This is the minimal setup you'll need to get your unit tests running.
 
-> 💡 Don't forget to choose the correct image you need for your projects PHP version requirement
+> 💡 Don't forget to choose the correct image you need for your project's PHP version requirement
 
 ```yaml
 version: 2
