@@ -23,6 +23,12 @@ menu:
     introduction:
       text: Introduction
       relativeUrl:
+    encryptable:
+      text: Encryptable
+      relativeUrl: encryptable.html
+    uuid:
+      text: Uuid
+      relativeUrl: uuid.html
 
   sections:
     ci:
