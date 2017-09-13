@@ -48,14 +48,14 @@
 
                             
                                 <li class="nav-item">
-                                    <a href="https://laratools.com/" class="nav-link active">
+                                    <a href="https://laratools.com/" class="nav-link ">
                                         Introduction
                                     </a>
                                 </li>
 
                             
                                 <li class="nav-item">
-                                    <a href="https://laratools.com/encryptable.html" class="nav-link ">
+                                    <a href="https://laratools.com/encryptable.html" class="nav-link active">
                                         Encryptable
                                     </a>
                                 </li>
@@ -76,7 +76,7 @@
 
                             <ul class="nav flex-column">
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/" class="nav-link active">
+                                        <a href="https://laratools.com/laravel-ci/" class="nav-link ">
                                             Introduction
                                         </a>
                                     </li>
@@ -96,16 +96,38 @@
 
                 
                 <section class="col-sm-9 col-lg-10 content">
-                    <h1 id="introduction">Introduction</h1>
-<p>Laratools is a collection of useful everyday tools for Laravel which implement common functionality found in many applications.</p>
-<h2 id="installation">Installation</h2>
-<pre><code class="language-bash">composer require laratools/laratools</code></pre>
-<p>You only need to add the service providers and facades if you're using Laravel 5.4 or below. Laravel 5.5 and above will use the auto-discover feature to set this up for you.</p>
-<pre><code class="language-php">'providers' =&gt; [
-    \Laratools\Providers\LaratoolsServiceProvider::class,
-],</code></pre>
-<h2 id="security">Security</h2>
-<p>If you discover any security related issues, please email <a href="mailto:security@iwader.co.uk">security@iwader.co.uk</a> instead of using the issue tracker.</p>
+                    <h1 id="encryptable">Encryptable</h1>
+<p>The encryptable trait can automatically encrypt and decrypt attributes on your models</p>
+<ul>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#unsafe-decryption">Unsafe Decryption</a></li>
+</ul></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-php">class BankAccount extends Model
+{
+    protected $casts = [
+        'number'    =&gt; 'encrypt',
+        'sort_code' =&gt; 'encrypt',
+    ];
+}</code></pre>
+<p>This model will now automatically encrypt and decrypt the <code>number</code> and <code>sort_code</code> attributes when saving/retrieving from the database.</p>
+<h4 id="unsafe-decryption">Unsafe Decryption</h4>
+<p>By default if a <code>DecryptException</code> is thrown when attempting to decrypt the attribute, the encryptable trait will catch the exception
+and safely return the unaltered contents of the attribute, this is to prevent any unexpected exceptions in your application.
+If you wish to change this behaviour and have the <code>DecryptException</code> thrown then you may set the <code>protected $safeDecrypt = false</code> property on your model. </p>
+<pre><code class="language-php">class BankAccount extends Model
+{
+    protected $casts = [
+        'number'    =&gt; 'encrypt',
+        'sort_code' =&gt; 'encrypt',
+    ];
+
+    protected $safeDecrypt = false;
+}</code></pre>
+<p>Now when the <code>number</code> or <code>sort_code</code> attributes fail to decrypt (e.g because of an invalid hmac) then the <code>DecryptException</code> will be thrown and you can handle
+it within your application however you need to.</p>
                 </section>
 
             </div>

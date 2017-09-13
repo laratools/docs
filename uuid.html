@@ -48,7 +48,7 @@
 
                             
                                 <li class="nav-item">
-                                    <a href="https://laratools.com/" class="nav-link active">
+                                    <a href="https://laratools.com/" class="nav-link ">
                                         Introduction
                                     </a>
                                 </li>
@@ -62,7 +62,7 @@
 
                             
                                 <li class="nav-item">
-                                    <a href="https://laratools.com/uuid.html" class="nav-link ">
+                                    <a href="https://laratools.com/uuid.html" class="nav-link active">
                                         Uuid
                                     </a>
                                 </li>
@@ -76,7 +76,7 @@
 
                             <ul class="nav flex-column">
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/" class="nav-link active">
+                                        <a href="https://laratools.com/laravel-ci/" class="nav-link ">
                                             Introduction
                                         </a>
                                     </li>
@@ -96,16 +96,46 @@
 
                 
                 <section class="col-sm-9 col-lg-10 content">
-                    <h1 id="introduction">Introduction</h1>
-<p>Laratools is a collection of useful everyday tools for Laravel which implement common functionality found in many applications.</p>
-<h2 id="installation">Installation</h2>
-<pre><code class="language-bash">composer require laratools/laratools</code></pre>
-<p>You only need to add the service providers and facades if you're using Laravel 5.4 or below. Laravel 5.5 and above will use the auto-discover feature to set this up for you.</p>
-<pre><code class="language-php">'providers' =&gt; [
-    \Laratools\Providers\LaratoolsServiceProvider::class,
-],</code></pre>
-<h2 id="security">Security</h2>
-<p>If you discover any security related issues, please email <a href="mailto:security@iwader.co.uk">security@iwader.co.uk</a> instead of using the issue tracker.</p>
+                    <h1 id="uuid">UUID</h1>
+<p>The uuid trait automatically generates uuids for your Eloquent models.</p>
+<ul>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#primary-key">Primary Key</a></li>
+</ul></li>
+<li><a href="#custom-column">Custom Column</a></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>Usage is as simple as adding a uuid column to your database and using the trait on your model.</p>
+<pre><code class="language-php">Schema::table('users', function (Blueprint $table)
+{
+    $table-&gt;uuid('uuid');
+});</code></pre>
+<pre><code class="language-php">use Laratools\Eloquent\Uuid;
+
+class User extends Model
+{
+    use Uuid;
+}</code></pre>
+<p>Now, whenever you save a new model, a uuid will be generated.</p>
+<h4 id="primary-key">Primary Key</h4>
+<p>Using a uuid as the primary key is as simple as setting auto-increments on your model to false.</p>
+<pre><code class="language-php">use Laratools\Eloquent\Uuid;
+
+class User extends Model
+{
+    use Uuid;
+
+    public $incrementing = false;
+}</code></pre>
+<h2 id="custom-column">Custom Column</h2>
+<p>By default the trait will assume a column name of <code>uuid</code>, however you can customise this on a per-model basis by defining the <code>UUID_COLUMN</code> constant on your model.</p>
+<pre><code class="language-php">class User extends Model
+{
+    use Uuid;
+
+    const UUID_COLUMN = 'id';
+}</code></pre>
                 </section>
 
             </div>
