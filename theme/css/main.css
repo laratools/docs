@@ -112,3 +112,10 @@ h2 {
 .nav__section-header {
     margin-top: 1rem;
 }
+
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75px;
+}
