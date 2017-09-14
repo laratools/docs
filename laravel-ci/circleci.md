@@ -123,18 +123,13 @@ jobs:
           command: npm run prod
 
       - run:
-          name: Open Browsers
-          background: true
-          command: ./vendor/laravel/dusk/bin/chromedriver-linux
-
-      - run:
           name: Serve Application
           background: true
           command: php artisan serve
 
       - run:
           name: Dusk
-          command: DISPLAY=:0 php artisan dusk
+          command: php artisan dusk
 
       - store_artifacts:
           path: ./tests/Browser/console

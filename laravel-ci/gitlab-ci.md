@@ -67,7 +67,6 @@ before_script:
   - source ~/.nvm/nvm.sh
   - nvm install 8
   - npm install
-  - nohup ./vendor/laravel/dusk/bin/chromedriver-linux &
   - nohup php artisan serve &
 
 test:
@@ -80,5 +79,5 @@ test:
   script:
     - ./vendor/bin/phpunit
     - npm run prod
-    - DISPLAY=:0 php artisan dusk
+    - php artisan dusk
 ``` 
