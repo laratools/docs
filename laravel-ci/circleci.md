@@ -27,7 +27,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/laravel-ci:latest
+      - image: laratools/laravel-ci:7.1
       
     steps:
 
@@ -56,7 +56,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/laravel-ci:latest
+      - image: laratools/laravel-ci:7.1
       
     steps:
 
@@ -99,7 +99,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/laravel-ci:latest
+      - image: laratools/laravel-ci:7.1
       
     steps:
 

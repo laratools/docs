@@ -19,7 +19,7 @@ This is the minimal setup you'll need to get your unit tests running.
 > 💡 Don't forget to choose the correct image you need for your project's PHP version requirement
 
 ```yaml
-image: laratools/laravel-ci:latest
+image: laratools/laravel-ci:7.1
 
 before_script:
   - composer install --no-progress --no-suggest
@@ -36,7 +36,7 @@ The `laratools/laravel-ci` image comes with [nvm](https://github.com/creationix/
 Here we'll install node version 8, install our npm dependencies and then run laravel mix to check our production assets can be built.
 
 ```yaml
-image: laratools/laravel-ci:latest
+image: laratools/laravel-ci:7.1
 
 before_script:
   - composer install --no-progress --no-suggest
@@ -61,7 +61,7 @@ Defining them means GitLab CI will store them once the build has finished for yo
 In this case, it means you can see what the browser was doing if the tests fail.
 
 ```yaml
-image: laratools/laravel-ci:latest
+image: laratools/laravel-ci:7.1
 
 before_script:
   - composer install --no-progress --no-suggest
