@@ -97,7 +97,8 @@
                 
                 <section class="col-sm-9 col-lg-10 content">
                     <h1 id="laravel-ci-on-circleci">Laravel-CI on CircleCI</h1>
-<p>Heres a few examples on getting up and running using the image on CircleCI. You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.</p>
+<p>Here are a few examples on getting up and running using the image on CircleCI.
+You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.</p>
 <h4 id="contents">Contents</h4>
 <ul>
 <li><a href="#getting-started">Getting Started</a></li>
@@ -116,7 +117,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/laravel-ci:latest
+      - image: laratools/laravel-ci:7.1
 
     steps:
 
@@ -139,7 +140,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/laravel-ci:latest
+      - image: laratools/laravel-ci:7.1
 
     steps:
 
@@ -163,11 +164,11 @@ jobs:
           name: Mix
           command: npm run prod</code></pre>
 <h2 id="laravel-dusk">Laravel Dusk</h2>
-<p>Heres where things get a little trickier. Firstly we must open a browser, by default dusk uses chrome so we'll open a new instance.
-Next you'll need to serve your application to chrome can interact with it. Luckily Artisan comes with a handy serve command <code>php artisan serve</code>, lets use that.
-Finally we can run the dusk tests.</p>
-<p>In this example we also store the artifacts. Artifacts are any files that are generated during the build process. Defining them means CircleCI will store them
-for you to access later. In this case, it means you can see what the browser was doing if the tests fail.  </p>
+<p>Before you can run your browser tests you'll need to serve your application so the browser can interact with it.
+Luckily Artisan comes with a handy serve command <code>php artisan serve</code>, lets use that.</p>
+<p>In this example we also store the artifacts. Artifacts are files that are generated during the build process.
+Defining them means CircleCI will store them once the build has finished for you to access later.
+In this case, it means you can see what the browser was doing if the tests fail.</p>
 <pre><code class="language-yaml">version: 2
 
 jobs:
@@ -175,7 +176,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/laravel-ci:latest
+      - image: laratools/laravel-ci:7.1
 
     steps:
 
