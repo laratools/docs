@@ -4,7 +4,7 @@ currentMenu: gitlab-ci
 
 # Laravel-CI on GitLab CI
 
-Heres a few examples on getting up and running using the image on GitLab CI.
+Here are a few examples on getting up and running using the image on GitLab CI.
 
 #### Contents
 
@@ -52,12 +52,13 @@ test:
 
 ## Laravel Dusk
 
-Heres where things get a little trickier. Firstly we must open a browser, by default dusk uses chrome so we'll open a new instance.
-Next you'll need to serve your application to chrome can interact with it. Luckily Artisan comes with a handy serve command `php artisan serve`, lets use that.
-Finally we can run the dusk tests.
+Before you can run your browser tests you'll need to serve your application so the browser can interact with it.
+Luckily Artisan comes with a handy serve command `php artisan serve`, lets use that.
+You'll need to combine it with `nohup` so the process runs in the background so that you can also run the tests at the same time.
 
-In this example we also store the artifacts. Artifacts are any files that are generated during the build process. Defining them means CircleCI will store them
-for you to access later. In this case, it means you can see what the browser was doing if the tests fail.  
+In this example we also store the artifacts. Artifacts are files that are generated during the build process.
+Defining them means GitLab CI will store them once the build has finished for you to access later.
+In this case, it means you can see what the browser was doing if the tests fail.
 
 ```yaml
 image: laratools/laravel-ci:latest

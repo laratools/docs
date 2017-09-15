@@ -4,7 +4,8 @@ currentMenu: circleci
 
 # Laravel-CI on CircleCI
 
-Heres a few examples on getting up and running using the image on CircleCI. You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.
+Here are a few examples on getting up and running using the image on CircleCI.
+You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.
 
 #### Contents
 
@@ -82,12 +83,12 @@ jobs:
 
 ## Laravel Dusk
 
-Heres where things get a little trickier. Firstly we must open a browser, by default dusk uses chrome so we'll open a new instance.
-Next you'll need to serve your application to chrome can interact with it. Luckily Artisan comes with a handy serve command `php artisan serve`, lets use that.
-Finally we can run the dusk tests.
+Before you can run your browser tests you'll need to serve your application so the browser can interact with it.
+Luckily Artisan comes with a handy serve command `php artisan serve`, lets use that.
 
-In this example we also store the artifacts. Artifacts are any files that are generated during the build process. Defining them means CircleCI will store them
-for you to access later. In this case, it means you can see what the browser was doing if the tests fail.  
+In this example we also store the artifacts. Artifacts are files that are generated during the build process.
+Defining them means CircleCI will store them once the build has finished for you to access later.
+In this case, it means you can see what the browser was doing if the tests fail.
 
 
 ```yaml
