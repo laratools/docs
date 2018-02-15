@@ -18,16 +18,16 @@ Usage is as simple as adding a uuid column to your database and using the trait 
 ```php
 Schema::table('users', function (Blueprint $table)
 {
-    $table->uuid('uuid');
+    $table->binaryUuid('uuid');
 });
 ```  
 
 ```php
-use Laratools\Eloquent\Uuid;
+use Laratools\Eloquent\BinaryUuid;
 
 class User extends Model
 {
-    use Uuid;
+    use BinaryUuid;
 }
 ```
 
@@ -38,11 +38,11 @@ Now, whenever you save a new model, a uuid will be generated.
 Using a uuid as the primary key is as simple as setting auto-increments on your model to false.
 
 ```php
-use Laratools\Eloquent\Uuid;
+use Laratools\Eloquent\BinaryUuid;
 
 class User extends Model
 {
-    use Uuid;
+    use BinaryUuid;
     
     public $incrementing = false;
 
@@ -55,9 +55,11 @@ class User extends Model
 By default the trait will assume a column name of `uuid`, however you can customise this on a per-model basis by defining the `UUID_COLUMN` constant on your model.
 
 ```php
+use Laratools\Eloquent\BinaryUuid;
+
 class User extends Model
 {
-    use Uuid;
+    use BinaryUuid;
     
     const UUID_COLUMN = 'id';
 }
