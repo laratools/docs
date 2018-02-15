@@ -44,6 +44,8 @@ class User extends Model
     use Uuid;
     
     public $incrementing = false;
+
+    protected $primaryKey = 'uuid';
 }
 ```
 
