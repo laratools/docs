@@ -10,6 +10,7 @@ The uuid trait automatically generates uuids for your Eloquent models.
     - [Primary Key](#primary-key)
 - [Custom Column](#custom-column)
 - [Scope](#scope)
+- [String Based UUIDs](#string-based-uuids)
 
 ## Usage
 
@@ -76,3 +77,28 @@ The trait provides a convenient scope for finding models based on the uuid colum
     '041f681f-9c9b-4ca4-b623-fb9928490e8c',
     '93b1e345-b262-4bc7-ad41-034f755a00c3',
 ])->get()`
+
+## String Based UUIDs
+
+> ⚠️ String based UUIDs are consistently slower on any size dataset. Use this at your own caution ⚠️
+
+Usage is identical to the `BinaryUuid` trait with two differences.
+
+1. You should use the `uuid` type provided by Laravel. This creates a char column type with a length of 36.
+2. There is no `uuid_text` attribute, only `uuid`
+
+```php
+Schema::table('users', function (Blueprint $table)
+{
+    $table->uuid('uuid');
+});
+```
+
+```php
+use Laratools\Eloquent\Uuid;
+
+class User extends Model
+{
+    use Uuid;
+}
+```
