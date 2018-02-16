@@ -31,7 +31,8 @@ class User extends Model
 }
 ```
 
-Now, whenever you save a new model, a uuid will be generated.
+Now, whenever you save a new model, a uuid will be generated. When using the `BinaryUuid` trait, two attributes are provided, `$model->uuid` (The binary form) and `$model->uuid_text` (The string form).
+You should use `$model->uuid` whenever you are locating a model from the database, and use `$model->uuid_text` whenever you are display the uuid to your users (e.g API payloads).
 
 #### Primary Key
 
