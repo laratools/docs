@@ -1,6 +1,6 @@
 # Laratools Docs
 
-Documentation for [laratools/laratools](laratools) and [laratools/laravel-ci](laravel-ci).
+Documentation for [laratools/laratools](laratools) and [laratools/ci](ci).
 
 #### Contributing
 
@@ -15,5 +15,5 @@ MIT. See [LICENSE.md](license) file
 
 [license]: LICENSE
 [laratools]: https://github.com/laratools/laratools
-[laravel-ci]: https://github.com/laratools/laravel-ci 
+[ci]: https://github.com/laratools/ci
 [couscous]: http://couscous.io

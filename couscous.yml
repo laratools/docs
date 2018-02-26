@@ -32,14 +32,14 @@ menu:
 
   sections:
     ci:
-      name: Laravel CI
+      name: Laratools CI
       items:
         introduction:
           text: Introduction
-          relativeUrl: laravel-ci/
+          relativeUrl: ci/
         circleci:
           text: CircleCI
-          relativeUrl: laravel-ci/circleci.html
+          relativeUrl: ci/circleci.html
         gitlabci:
           text: GitLab CI
-          relativeUrl: laravel-ci/gitlab-ci.html
+          relativeUrl: ci/gitlab-ci.html

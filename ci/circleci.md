@@ -2,7 +2,7 @@
 currentMenu: circleci
 ---
 
-# Laravel-CI on CircleCI
+# Laratools CI on CircleCI
 
 Here are a few examples on getting up and running using the image on CircleCI.
 You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.
@@ -27,7 +27,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/laravel-ci:7.1
+      - image: laratools/ci:7.1
       
     steps:
 
@@ -44,7 +44,7 @@ jobs:
 
 ## Laravel Mix
 
-The `laratools/laravel-ci` image comes with [nvm](https://github.com/creationix/nvm) installed which allows you to easily install different node versions.
+The `laratools/ci` image comes with [nvm](https://github.com/creationix/nvm) installed which allows you to easily install different node versions.
 
 Here we'll install node version 8, install our npm dependencies and then run laravel mix to check our production assets can be built.
 
@@ -56,7 +56,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/laravel-ci:7.1
+      - image: laratools/ci:7.1
       
     steps:
 
@@ -99,7 +99,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/laravel-ci:7.1
+      - image: laratools/ci:7.1
       
     steps:
 
