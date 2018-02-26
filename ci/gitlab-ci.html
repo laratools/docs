@@ -71,22 +71,22 @@
                         </ul>
 
                                                     <p class="nav__section-header text-muted">
-                                Laravel CI
+                                Laratools CI
                             </p>
 
                             <ul class="nav flex-column">
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/" class="nav-link ">
+                                        <a href="https://laratools.com/ci/" class="nav-link ">
                                             Introduction
                                         </a>
                                     </li>
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/circleci.html" class="nav-link ">
+                                        <a href="https://laratools.com/ci/circleci.html" class="nav-link ">
                                             CircleCI
                                         </a>
                                     </li>
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/gitlab-ci.html" class="nav-link ">
+                                        <a href="https://laratools.com/ci/gitlab-ci.html" class="nav-link ">
                                             GitLab CI
                                         </a>
                                     </li>
@@ -96,7 +96,7 @@
 
                 
                 <section class="col-sm-9 col-lg-10 content">
-                    <h1 id="laravel-ci-on-gitlab-ci">Laravel-CI on GitLab CI</h1>
+                    <h1 id="laratools-ci-on-gitlab-ci">Laratools CI on GitLab CI</h1>
 <p>Here are a few examples on getting up and running using the image on GitLab CI.</p>
 <h4 id="contents">Contents</h4>
 <ul>
@@ -109,7 +109,7 @@
 <blockquote>
 <p>💡 Don't forget to choose the correct image you need for your project's PHP version requirement</p>
 </blockquote>
-<pre><code class="language-yaml">image: laratools/laravel-ci:7.1
+<pre><code class="language-yaml">image: laratools/ci:7.1
 
 before_script:
   - composer install --no-progress --no-suggest
@@ -118,9 +118,9 @@ test:
   script:
     - ./vendor/bin/phpunit</code></pre>
 <h2 id="laravel-mix">Laravel Mix</h2>
-<p>The <code>laratools/laravel-ci</code> image comes with <a href="https://github.com/creationix/nvm">nvm</a> installed which allows you to easily install different node versions.</p>
+<p>The <code>laratools/ci</code> image comes with <a href="https://github.com/creationix/nvm">nvm</a> installed which allows you to easily install different node versions.</p>
 <p>Here we'll install node version 8, install our npm dependencies and then run laravel mix to check our production assets can be built.</p>
-<pre><code class="language-yaml">image: laratools/laravel-ci:7.1
+<pre><code class="language-yaml">image: laratools/ci:7.1
 
 before_script:
   - composer install --no-progress --no-suggest
@@ -139,7 +139,7 @@ You'll need to combine it with <code>nohup</code> so the process runs in the bac
 <p>In this example we also store the artifacts. Artifacts are files that are generated during the build process.
 Defining them means GitLab CI will store them once the build has finished for you to access later.
 In this case, it means you can see what the browser was doing if the tests fail.</p>
-<pre><code class="language-yaml">image: laratools/laravel-ci:7.1
+<pre><code class="language-yaml">image: laratools/ci:7.1
 
 before_script:
   - composer install --no-progress --no-suggest

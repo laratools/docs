@@ -71,22 +71,22 @@
                         </ul>
 
                                                     <p class="nav__section-header text-muted">
-                                Laravel CI
+                                Laratools CI
                             </p>
 
                             <ul class="nav flex-column">
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/" class="nav-link ">
+                                        <a href="https://laratools.com/ci/" class="nav-link ">
                                             Introduction
                                         </a>
                                     </li>
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/circleci.html" class="nav-link active">
+                                        <a href="https://laratools.com/ci/circleci.html" class="nav-link active">
                                             CircleCI
                                         </a>
                                     </li>
                                                                     <li class="nav-item">
-                                        <a href="https://laratools.com/laravel-ci/gitlab-ci.html" class="nav-link ">
+                                        <a href="https://laratools.com/ci/gitlab-ci.html" class="nav-link ">
                                             GitLab CI
                                         </a>
                                     </li>
@@ -96,7 +96,7 @@
 
                 
                 <section class="col-sm-9 col-lg-10 content">
-                    <h1 id="laravel-ci-on-circleci">Laravel-CI on CircleCI</h1>
+                    <h1 id="laratools-ci-on-circleci">Laratools CI on CircleCI</h1>
 <p>Here are a few examples on getting up and running using the image on CircleCI.
 You must be using CircleCI 2.0 otherwise you won't be able to use the docker image.</p>
 <h4 id="contents">Contents</h4>
@@ -117,7 +117,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/laravel-ci:7.1
+      - image: laratools/ci:7.1
 
     steps:
 
@@ -131,7 +131,7 @@ jobs:
           name: Unit Tests
           command: ./vendor/bin/phpunit</code></pre>
 <h2 id="laravel-mix">Laravel Mix</h2>
-<p>The <code>laratools/laravel-ci</code> image comes with <a href="https://github.com/creationix/nvm">nvm</a> installed which allows you to easily install different node versions.</p>
+<p>The <code>laratools/ci</code> image comes with <a href="https://github.com/creationix/nvm">nvm</a> installed which allows you to easily install different node versions.</p>
 <p>Here we'll install node version 8, install our npm dependencies and then run laravel mix to check our production assets can be built.</p>
 <pre><code class="language-yaml">version: 2
 
@@ -140,7 +140,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/laravel-ci:7.1
+      - image: laratools/ci:7.1
 
     steps:
 
@@ -176,7 +176,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/laravel-ci:7.1
+      - image: laratools/ci:7.1
 
     steps:
 
