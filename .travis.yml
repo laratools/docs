@@ -15,3 +15,7 @@ before_script:
 
 script:
   - vendor/bin/couscous travis-auto-deploy --php-version=7.1
+
+branches:
+  only:
+    - master
