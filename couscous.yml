@@ -26,6 +26,9 @@ menu:
     encryptable:
       text: Encryptable
       relativeUrl: encryptable.html
+    redirect-macros:
+      text: Redirect Macros
+      relativeUrl: redirect-macros.html
     uuid:
       text: Uuid
       relativeUrl: uuid.html
