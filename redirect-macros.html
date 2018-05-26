@@ -55,14 +55,14 @@
 
                             
                                 <li class="nav-item">
-                                    <a href="https://laratools.com/encryptable.html" class="nav-link active">
+                                    <a href="https://laratools.com/encryptable.html" class="nav-link ">
                                         Encryptable
                                     </a>
                                 </li>
 
                             
                                 <li class="nav-item">
-                                    <a href="https://laratools.com/redirect-macros.html" class="nav-link ">
+                                    <a href="https://laratools.com/redirect-macros.html" class="nav-link active">
                                         Redirect Macros
                                     </a>
                                 </li>
@@ -103,38 +103,58 @@
 
                 
                 <section class="col-sm-9 col-lg-10 content">
-                    <h1 id="encryptable">Encryptable</h1>
-<p>The encryptable trait can automatically encrypt and decrypt attributes on your models</p>
-<ul>
-<li><a href="#usage">Usage</a>
-<ul>
-<li><a href="#unsafe-decryption">Unsafe Decryption</a></li>
-</ul></li>
-</ul>
-<h2 id="usage">Usage</h2>
-<pre><code class="language-php">class BankAccount extends Model
+                    <h1 id="redirect-macros">Redirect Macros</h1>
+<p>Laratools includes several macros on the <code>RedirectResponse</code> class for easily sharing notice and success messages.
+They are used in the exact same way you would redirect with error messages by using <code>redirect()-&gt;withErrors('Failed to create model...')</code>.</p>
+<h2 id="success-messages">Success Messages</h2>
+<p>To enable success messages you'll need to add <code>Laratools\View\Middleware\ShareSuccessesFromSession</code> to your middleware stack in <code>App\Http\Kernel</code>.
+This makes <code>$successes</code> available in your views.</p>
+<pre><code class="language-php">protected $middleware = [
+    ...
+    \Laratools\View\Middleware\ShareSuccessFromSession::class,
+    ...
+];</code></pre>
+<p>To redirect with success messages use the <code>withSuccesses()</code> method, you may either pass in a string, array of strings, or <code>Illuminate\Contracts\Support\MessageProvider</code> instance.</p>
+<pre><code class="language-php">public function store()
 {
-    protected $casts = [
-        'number'    =&gt; 'encrypt',
-        'sort_code' =&gt; 'encrypt',
-    ];
-}</code></pre>
-<p>This model will now automatically encrypt and decrypt the <code>number</code> and <code>sort_code</code> attributes when saving/retrieving from the database.</p>
-<h4 id="unsafe-decryption">Unsafe Decryption</h4>
-<p>By default if a <code>DecryptException</code> is thrown when attempting to decrypt the attribute, the encryptable trait will catch the exception
-and safely return the unaltered contents of the attribute, this is to prevent any unexpected exceptions in your application.
-If you wish to change this behaviour and have the <code>DecryptException</code> thrown then you may set the <code>protected $safeDecrypt = false</code> property on your model. </p>
-<pre><code class="language-php">class BankAccount extends Model
-{
-    protected $casts = [
-        'number'    =&gt; 'encrypt',
-        'sort_code' =&gt; 'encrypt',
-    ];
+    // Store a model
 
-    protected $safeDecrypt = false;
+    return redirect()-&gt;withSuccesses('Successfully created a model');
 }</code></pre>
-<p>Now when the <code>number</code> or <code>sort_code</code> attributes fail to decrypt (e.g because of an invalid hmac) then the <code>DecryptException</code> will be thrown and you can handle
-it within your application however you need to.</p>
+<p>Finally to render the messages in your views check if there are any messages using <code>$successes-&gt;any()</code> and then render each of the messages using <code>$successes-&gt;all()</code>.</p>
+<pre><code class="language-php">@if ($successes-&gt;any())
+    &lt;div class="alert alert-success"&gt;
+        &lt;ul&gt;
+            @foreach($successes-&gt;all() as $success)
+                &lt;li&gt;{{ $success }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif</code></pre>
+<h2 id="notices">Notices</h2>
+<p>To enable notices you'll need to add <code>Laratools\View\Middleware\ShareNoticesFromSession</code> to your middleware stack in <code>App\Http\Kernel</code>.
+This makes <code>$notices</code> available in your views.</p>
+<pre><code class="language-php">protected $middleware = [
+    ...
+    \Laratools\View\Middleware\ShareNoticesFromSession::class,
+    ...
+];</code></pre>
+<p>To redirect with notices using the <code>withNotices()</code> method, you may either pass in a string, array of strings, or <code>Illuminate\Contracts\Support\MessageProvider</code> instance.</p>
+<pre><code class="language-php">public function info()
+{
+    // Do something
+
+    return redirect()-&gt;withNotices('Your import was successful, but we skipped X items...');</code></pre>
+<p>Finally to render the messages in your views check if there are any messages using <code>$notices-&gt;any()</code> and then render each of the messages using <code>$notices-&gt;all()</code>.</p>
+<pre><code class="language-php">@if ($notices-&gt;any())
+    &lt;div class="alert alert-info"&gt;
+        &lt;ul&gt;
+            @foreach($notices-&gt;all() as $notice)
+                &lt;li&gt;{{ $notice }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif</code></pre>
                 </section>
 
             </div>
