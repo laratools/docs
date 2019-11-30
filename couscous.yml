@@ -3,7 +3,7 @@ template:
   index: introduction.md
 
 exclude:
-  - %gitignore%
+  - "%gitignore%"
 
 cname: laratools.com
 
