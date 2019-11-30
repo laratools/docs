@@ -73,7 +73,7 @@ jobs:
       - run:
           name: Install Node Dependencies
           command: |
-            nvm install 8
+            nvm install 10
             npm install
 
       - run:
@@ -116,7 +116,7 @@ jobs:
       - run:
           name: Install Node Dependencies
           command: |
-            nvm install 8
+            nvm install 10
             npm install
 
       - run:

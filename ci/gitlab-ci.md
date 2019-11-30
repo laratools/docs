@@ -41,7 +41,7 @@ image: laratools/ci:7.4
 before_script:
   - composer install --no-progress --no-suggest
   - source ~/.nvm/nvm.sh
-  - nvm install 8
+  - nvm install 10
   - npm install
 
 test:
@@ -66,7 +66,7 @@ image: laratools/ci:7.4
 before_script:
   - composer install --no-progress --no-suggest
   - source ~/.nvm/nvm.sh
-  - nvm install 8
+  - nvm install 10
   - npm install
   - nohup php artisan serve &
 
