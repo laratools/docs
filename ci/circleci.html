@@ -124,7 +124,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/ci:7.1
+      - image: laratools/ci:7.4
 
     steps:
 
@@ -147,7 +147,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/ci:7.1
+      - image: laratools/ci:7.4
 
     steps:
 
@@ -164,7 +164,7 @@ jobs:
       - run:
           name: Install Node Dependencies
           command: |
-            nvm install 8
+            nvm install 10
             npm install
 
       - run:
@@ -183,7 +183,7 @@ jobs:
     working_directory: /var/www
 
     docker:
-      - image: laratools/ci:7.1
+      - image: laratools/ci:7.4
 
     steps:
 
@@ -200,7 +200,7 @@ jobs:
       - run:
           name: Install Node Dependencies
           command: |
-            nvm install 8
+            nvm install 10
             npm install
 
       - run:
