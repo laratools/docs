@@ -27,7 +27,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/ci:7.1
+      - image: laratools/ci:7.4
       
     steps:
 
@@ -56,7 +56,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/ci:7.1
+      - image: laratools/ci:7.4
       
     steps:
 
@@ -99,7 +99,7 @@ jobs:
     working_directory: /var/www
     
     docker:
-      - image: laratools/ci:7.1
+      - image: laratools/ci:7.4
       
     steps:
 

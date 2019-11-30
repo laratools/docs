@@ -18,11 +18,13 @@ Of course it may be used with any platform that supports Docker, so feel free to
 
 ## PHP Versions
 
-There are several images based on the PHP version you require. Currently we support `7.0`, `7.1` and `7.2`.
+There are several images based on the PHP version you require. Currently we support `7.4`, `7.3`, `7.2`, `7.1` and `7.0`.
 
-* `laratools/ci:7.0`
-* `laratools/ci:7.1`
+* `laratools/ci:7.4`
+* `laratools/ci:7.3`
 * `laratools/ci:7.2`
+* `laratools/ci:7.1`
+* `laratools/ci:7.0`
 
 You can view the full list on the [docker repository](https://hub.docker.com/r/laratools/ci/tags/)
   
